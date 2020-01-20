@@ -1,1 +1,1 @@
-# Web_Programming
+# A repository for CSc 4370 - Web Programming
