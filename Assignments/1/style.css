@@ -1,0 +1,70 @@
+body{
+	background-image: url("background.png");
+}
+
+.container{
+	margin-left: calc(50vw - 450px);
+	max-width: 900px;
+}
+
+.tabholder{
+	display: flex;
+}
+
+	.tabholder button:hover{
+		background-color: #aad;
+	}
+
+.tab{
+	border: 1px solid gray;
+	padding: 10px 40px;	
+	font-size: 18px;
+	font-weight: bold;
+	width: 100%;
+	display: block;
+}
+
+.top{
+	line-height: 120px;
+	background-color: white;
+	overflow: hidden;
+	text-align: center;
+}
+
+	.top span{
+		font-size: 30px;
+		font-weight: 500;
+	}
+	
+.danhtranimg{
+	float: right;
+}
+	
+.gsuimg{
+	width: auto;
+	height: 120px;
+	float: left;
+}
+
+.subheading{
+	color: teal;
+	font-size: 24px;
+	font-weight: 600;
+}
+
+.personalinfocontainer{
+	max-width: auto;
+}
+
+.iconcontainer{
+	max-width: 64px;
+	max-height: 144px;
+	overflow: hidden;
+	float: right;
+	margin-right: 50px;
+}
+.img64{
+	width: auto;
+	height: 64px;
+	padding: 4px 0px;
+}
