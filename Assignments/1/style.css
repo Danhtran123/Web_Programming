@@ -1,10 +1,46 @@
 body{
 	background-image: url("background.png");
+	font-family: "Verdana";
+}
+
+table, td, th{
+	border-collapse: collapse;
+	border: 1px solid black;
+	text-align: center;
+}
+table{
+	width: 80%;
+	margin-right: 10%;
+	margin-left: 10%;
+}
+
+td, th{
+	padding: 10px;
+}
+
+td{
+	width: 33%;
+}
+
+a:hover{
+	color: red;
+}
+
+.tableback1{
+	background-color: #525b56;
+}
+
+.tableback2{
+	background-color: #A4978E;
 }
 
 .container{
 	margin-left: calc(50vw - 450px);
 	max-width: 900px;
+}
+
+.frontcontainer{
+	overflow: hidden;
 }
 
 .tabholder{
@@ -17,7 +53,7 @@ body{
 
 .tab{
 	border: 1px solid gray;
-	padding: 10px 40px;	
+	padding: 10px 40px;
 	font-size: 18px;
 	font-weight: bold;
 	width: 100%;
@@ -25,8 +61,7 @@ body{
 }
 
 .top{
-	line-height: 120px;
-	background-color: white;
+	line-height: 136px;
 	overflow: hidden;
 	text-align: center;
 }
@@ -34,8 +69,9 @@ body{
 	.top span{
 		font-size: 30px;
 		font-weight: 500;
+		float: right;
 	}
-	
+
 .danhtranimg{
 	float: right;
 }
@@ -46,25 +82,59 @@ body{
 	float: left;
 }
 
-.subheading{
-	color: teal;
+.subheading1{
+	color: #0039A6;
 	font-size: 24px;
 	font-weight: 600;
+	text-align: center;
 }
 
-.personalinfocontainer{
-	max-width: auto;
+.subheading2{
+	font-size: 18px;
+	font-weight: 700;
 }
 
 .iconcontainer{
-	max-width: 64px;
-	max-height: 144px;
-	overflow: hidden;
+	width: 64px;
+	height: 128px;
 	float: right;
 	margin-right: 50px;
 }
+
 .img64{
 	width: auto;
 	height: 64px;
-	padding: 4px 0px;
+	padding: 16px 0;
+}
+
+.movie{
+	width: 50%;
+	float: left;
+}
+
+.shows{
+	width: 50%;
+	float: right;
+}
+
+.quote{
+	font-style: italic;
+}
+
+.resumeleft{
+	height: auto;
+	float: left;
+	width: 33%;
+	border: 1px solid green;
+}
+
+.resumeright{
+	height: auto;
+	float: right;
+	width: 66%;
+	border: 1px solid red;
+}
+
+ol.dot{
+	list-style-type: inherit;
 }
