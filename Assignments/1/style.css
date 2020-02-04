@@ -26,12 +26,16 @@ a:hover{
 	color: red;
 }
 
+li{
+	padding: 4px
+}
+
 .tableback1{
-	background-color: #525b56;
+	background-color: #C2D3DA;
 }
 
 .tableback2{
-	background-color: #A4978E;
+	background-color: #DCD9C6;
 }
 
 .container{
@@ -61,19 +65,21 @@ a:hover{
 }
 
 .top{
-	line-height: 136px;
 	overflow: hidden;
-	text-align: center;
+	position: relative;
 }
 
-	.top span{
-		font-size: 30px;
-		font-weight: 500;
-		float: right;
-	}
+.homepageheader{
+	font-size: 30px;
+	font-weight: 500;
+	float: right;
+	line-height: 136px;
+}
 
 .danhtranimg{
 	float: right;
+	height: 200px;
+	width: auto;
 }
 	
 .gsuimg{
@@ -92,6 +98,12 @@ a:hover{
 .subheading2{
 	font-size: 18px;
 	font-weight: 700;
+}
+
+.subheading3{
+	font-size: 18px;
+	font-weight: 700;
+	text-decoration: underline;
 }
 
 .iconcontainer{
@@ -121,20 +133,89 @@ a:hover{
 	font-style: italic;
 }
 
+ol.dot{
+	list-style-type: inherit;
+}
+
+/*Resume Specific*/
+
+.resumeheader1{
+	font-weight: 500;
+	font-size: 30px;
+}
+
+.resumeheader2{
+	font-weight: 500;
+	font-size: 24px;
+	color: red;
+}
+
 .resumeleft{
 	height: auto;
 	float: left;
 	width: 33%;
-	border: 1px solid green;
+	border-right: 1px solid green;
 }
 
 .resumeright{
 	height: auto;
 	float: right;
 	width: 66%;
-	border: 1px solid red;
+	border-left: 1px solid red;
 }
 
-ol.dot{
-	list-style-type: inherit;
+.contact{
+	width: 100%;
+	border: 1px solid green;
+	height: 32px;
+	background-color: blue;
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 20px;
+}
+
+.contact span{
+	color: red;
+	font-size: 12px;
+	padding-top: 8px;
+}
+
+.contactimg{
+	height: 16px;
+	width: 16px;
+	padding-top: 8px;
+}
+
+.rsubheading1{
+	color: #00b3b3;
+	font-size: 24px;
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+.rsubheading2{
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.dateheading1{
+	float: right;
+	font-size: 12px;
+}
+
+.danhtranimg2{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 128px;
+	width: 128px;
+	border-radius: 50%;
+}
+
+ul.sub{
+	font-size: 12px;
+}
+
+.objective{
+	max-width: 70%;
 }
