@@ -30,6 +30,11 @@ li{
 	padding: 4px
 }
 
+.selectwords{
+	color: red;
+	font-weight: bold;
+}
+
 .tableback1{
 	background-color: #C2D3DA;
 }
@@ -247,6 +252,5 @@ ul.sub{
 }
 
 .objective{
-	padding-top: 5px;
 	max-width: 70%;
 }
