@@ -1,0 +1,46 @@
+<!DOCTYPE html5>
+	<head>
+		<title>7/11 Dice</title>
+		<link rel="stylesheet" type="text/css" href="carry.css" title="style" />
+		<link rel="stylesheet" type="text/css" href="game.css" title="style" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div class = "backContainer">
+			<h1 style="text-align:center; font-size:32pt;"> Casino Adventure </h1>
+			<img class="chips" src="chips.png" alt="Casino chips">
+			<div class="navBar">
+				<a href="../../Home/CasinoAdventure.html">Home</a>
+				<div class="dropdown">
+					<button class="dropbtn">Games <i class="fa fa-caret-down"></i></button>
+					<div class="dropdown-content">
+						<a href="../BlackJack/blackjack.html">Blackjack</a>
+						<a href="../HigherOrLower/hol.html">Higher/Lower</a>
+						<a href="../Dice/dice.html">7/11 Dice</a>
+					</div>
+				</div>
+				<div class="money">
+					$100
+				</div>
+			</div>
+			<div class="game-container">
+				<div style="text-align:center">
+					<div style="text-align:center;font-size:16pt;border:2px solid black;background-color:#333;display:block;margin-top:0.5cm;width:9.5cm;margin-left:auto;margin-right:auto">
+						<h2> Roll a 7 or an 11 and you win! </h2><br>
+					</div>
+				</div>
+				<div class="cards-container">
+					<img src="dice6.png" alt="firstDie" style="margin-right:2cm">
+					<img src="dice6.png" alt="secondDie">
+				</div>
+				<div class="move-container">
+					<form>
+						<label for="bet">Bet: $</label>
+						<input type="number" id="bet" name="bet" style="width:2cm"><br><br>
+						<input type="submit" value="Roll the Dice">
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
