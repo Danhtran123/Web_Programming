@@ -40,3 +40,15 @@
 .cards-sub-container{
 	display: flex;
 }
+
+.title{
+	text-align:center;
+	font-size:18pt;
+	border:2px solid black;
+	background-color:#333;
+	display:block;
+	margin-top: 0.5cm;
+	width:10cm;
+	margin-left:auto;
+	margin-right:auto;
+}
