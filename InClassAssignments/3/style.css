@@ -1,0 +1,38 @@
+header{
+	text-align: center;
+}
+
+main{
+	display: flex;
+	width: 70%;
+	text-align: center;
+	margin: 0 15%;
+}
+
+img.dog{
+	width: 200px;
+	float: right;
+}
+
+aside.leftcolumn{
+	flex-basis: 33%;
+}
+
+aside.rightcolumn{
+	flex-basis: 67%;
+}
+
+p.first{
+	clear: both;
+}
+
+p.second{
+	position: fixed;
+	bottom: 5px;
+}
+
+.colspace{
+	padding: 2em;
+	margin: 2em;
+	border: 4px dashed red;
+}
