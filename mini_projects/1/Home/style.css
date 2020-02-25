@@ -1,0 +1,15 @@
+aside{
+	float:right;
+	border:5px black dotted;
+	font-size:20pt;
+	text-align:center;
+	width: 20%;
+}
+
+.front1{
+	border: 5px solid black;
+}
+
+.gameHolder{
+	width: 50%;
+}
