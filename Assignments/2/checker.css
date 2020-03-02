@@ -1,0 +1,19 @@
+.checkerboard{
+	width: 300px;
+}
+
+.checkerslot{
+	width: 35px;
+	height: 35px;
+	border: 1px;
+	padding: 1px;
+	margin: 1px;
+}
+
+.red{
+	background-color: red;
+}
+
+.black{
+	background-color: black;
+}
