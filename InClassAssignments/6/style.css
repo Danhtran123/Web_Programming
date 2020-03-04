@@ -1,0 +1,15 @@
+.first{
+	background-color: #ccffcc;
+}
+
+.second{
+	background-color: #ccffff;
+}
+
+table{
+	margin: 0 auto;
+}
+
+td{
+	padding: 5px;
+}
