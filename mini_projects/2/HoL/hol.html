@@ -1,0 +1,124 @@
+<!DOCTYPE html5>
+	<head>
+		<title>Higher Or Lower</title>
+		<link rel="stylesheet" type="text/css" href="carry.css" title="style" />
+		<link rel="stylesheet" type="text/css" href="game.css" title="style" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div class = "backContainer">
+			<h1 style="text-align:center; font-size:32pt;"> Casino Adventure </h1>
+			<img class="chips" src="chips.png" alt="Casino chips">
+			<div class="navBar">
+				<a href="../../Home/CasinoAdventure.html">Home</a>
+				<div class="dropdown">
+					<button class="dropbtn">Games <i class="fa fa-caret-down"></i></button>
+					<div class="dropdown-content">
+						<a href="../BlackJack/blackjack.html">Blackjack</a>
+						<a href="../HigherOrLower/hol.html">Higher/Lower</a>
+						<a href="../Dice/dice.html">7/11 Dice</a>
+					</div>
+				</div>
+				<div class="money">
+					$100
+				</div>
+			</div>
+			<div class="game-container">
+				<div style="text-align:center">
+					<div class="title">
+						<h2> Higher or Lower? </h2><br>
+					</div>
+				</div>
+				<div style="margin-top:1cm;text-align:center;font-size:18pt">
+					<b>Current Card</b>
+				</div>
+				<div class="cards-container">
+					<img class="card" src="cardback.png" alt="cardback" style="margin-right:2.2cm">
+					<img id="currentCard" class="card" src="ace_spades.png" alt="cardback">
+					<img id="newCard" class="card" src="cardback.png" alt="cardback" style="margin-left:1m">
+				</div>
+				<div class="move-container" style="text-align:center;font-size:16pt">
+					<form name="myForm" onsubmit="return flipCard()">
+						<label for="bet">Bet: $</label>
+						<input type="number" id="bet" name="bet" style="width:2cm;height:0.7cm" required><br><br>
+						<input type="radio" id="higher1" name="higherOrLower" value="1" required> 
+						<label for="higher1">Higher</label><br>
+						<input type="radio" id="lower1" name="higherOrLower" value="0" required>
+						<label for="lower1">Lower</label><br><br>
+						<input type="submit" value="Flip Card" style="font-size:16pt"><br>
+						<button type="button" style="font-size:16pt;margin-top:0.75cm;height:1cm" onclick="window.location.href='hol.html';">New Game</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	<script type="text/javascript">
+		var suite1=Math.floor(Math.random()*4)+1;
+		var number1=Math.floor(Math.random()*13)+1;
+		var suite2=Math.floor(Math.random()*4)+1;
+		var number2=Math.floor(Math.random()*13)+1;
+		while(suite1==suite2&&number1==number2)
+		{
+			suite2=Math.floor(Math.random()*4)+1;
+			number2=Math.floor(Math.random()*13)+1;
+		}
+		var realsuite1=""
+		var realsuite2=""
+		switch(suite1) {
+			case 1:
+			realsuite1="C";
+			break;
+			case 2:
+			realsuite1="D";
+			break;
+			case 3:
+			realsuite1="H";
+			break;
+			case 4:
+			realsuite1="S";
+			break;
+		}
+		switch(suite2) {
+			case 1:
+			realsuite2="C";
+			break;
+			case 2:
+			realsuite2="D";
+			break;
+			case 3:
+			realsuite2="H";
+			break;
+			case 4:
+			realsuite2="S";
+			break;
+		}
+		var temp1=number1+""+realsuite1+".png";
+		var temp2=number2+""+realsuite2+".png";
+		document.getElementById("currentCard").src=temp1;
+		function flipCard() {
+			
+			document.getElementById("newCard").src=temp2;
+			var hol=document.forms["myForm"]["higherOrLower"].value;
+			if(number1==number2)
+			{
+				alert("It's a tie.");
+				return false;
+			}
+			else if(hol==1&&number2>number1)
+			{
+				alert("You win!!");
+				return false;
+			}
+			else if(hol==0&&number2<number1)
+			{
+				alert("You win!!");
+				return false;
+			}
+			else
+			{
+				alert("You lose.");
+				return false;
+			}
+		}
+	</script>
+	</body>
+</html>
