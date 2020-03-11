@@ -34,15 +34,15 @@
 					<img id="die2" src="dice6.png" alt="second die">
 				</div>
 				<div class="move-container">
-					<form style="font-size:18pt;text-align:center">
+					<form style="font-size:18pt;text-align:center" onsubmit="return rollTheDice()">
 						<label for="bet">Bet: $</label>
-						<input type="number" id="bet" name="bet" style="width:2cm;height:0.75cm"><br><br>
-						<button type="button" onclick="rollTheDice()" style="font-size:18pt">Roll the Dice</button>
+						<input type="number" id="bet" name="bet" style="width:2cm;height:0.75cm" required><br><br>
+						<input type="submit" style="font-size:18pt" value="Roll the Dice">
 					</form>
 				</div>
 			</div>
 		</div>
-	<script>
+	<script type="text/javascript">
 		function rollTheDice()
 		{
 			var firstRoll=Math.floor(Math.random()*6)+1;
