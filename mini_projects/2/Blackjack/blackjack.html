@@ -30,12 +30,13 @@
 						<h2> BlackJack </h2>
 					</div>
 				</div>
-				<div class="cards-container">
+				<div class="cards-container" style="margin-top:0.5cm">
 					<div class="cards-sub-container">
 						<div class="player">Dealer</div>
 						<img id="dcard1" class="card" alt="Dealer Card">
 						<img id="dcard2" class="card" src="cardback.png" alt="cardback">
 					</div>
+					<div id="result" style="float:right;font-size:18pt"></div>
 					<div class="cards-sub-container">
 						<div class="player">Player</div>
 						<img id="pcard1" class="card" src="ace_spades.png" alt="Player Card">
@@ -45,20 +46,23 @@
 						<img id="pcard5">
 					</div>
 				</div>
-				<div class="moneyturn">
-					<form style="font-size:18pt">
-						<label for="bet">Bet: $</label>
-						<input type="number" id="bet" name="bet" style="width:2cm;height:0.75cm"><br><br>
-					</form>
+				<div class="moneyturn" style="font-size:16pt;font-style:bold">
+					Bet: $
+					<div id="bet" style="width:2cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm"></div>
+					<button type="button" onclick="decreaseBet()" style="width:0.8cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">-</button>
+					<button type="button" onclick="increaseBet()" style="width:0.8cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">+</button>
 				</div>
 				<div class="move-container">
 					<button type="button" class="move-action" onclick="hit()">Hit</button>
 					<button type="button" class="move-action" onclick="endGame()">Stand</button>
 					<button type="button" class="move-action">Double</button>
 				</div>
+
 			</div>
 		</div>
 	<script type="text/javascript">
+			var money=0;
+			document.getElementById("bet").innerHTML=money;
 			var dealerScore=0;
 			var playerScore=0;
 			// First array is suite (clubs, diamonds, hearts, spades in order)
@@ -135,6 +139,17 @@
 				document.getElementById("pcard2").src=temp;
 				}
 			}
+			function increaseBet() {
+				money+=25;
+				document.getElementById("bet").innerHTML=money;
+			}
+			function decreaseBet() {
+				if(money>0)
+				{
+					money-=25;
+				}
+				document.getElementById("bet").innerHTML=money;
+			}
 			function hit() {
 				var number=Math.floor(Math.random()*13)+1;
 				var suite=Math.floor(Math.random()*4)+1;
@@ -174,11 +189,19 @@
 					{
 						endGame();
 					}
+					else if(newCardCounter>5)
+					{
+						endGame();
+					}
 				}
 				else
 				{
 					playerScore+=10;
 					if(playerScore>21)
+					{
+						endGame();
+					}
+					else if(newCardCounter>5)
 					{
 						endGame();
 					}
@@ -190,13 +213,26 @@
 				var temp=dealtCards[1];
 				var temp1=temp+".png";
 				document.getElementById("dcard2").src=temp1;
-				if(playerScore<=21&&playerScore>dealerScore)
+				if(dealtCards[6]!=null&&playerScore<=21)
 				{
-					alert("You win!!");
+					document.getElementById("result").className="title";
+					document.getElementById("result").style.float="right";
+					document.getElementById("result").style.width="3cm";
+					document.getElementById("result").innerHTML="You win!!";
+				}
+				else if(playerScore<=21&&playerScore>dealerScore)
+				{
+					document.getElementById("result").className="title";
+					document.getElementById("result").style.float="right";
+					document.getElementById("result").style.width="3cm";
+					document.getElementById("result").innerHTML="You win!!";
 				}
 				else
 				{
-					alert("You lose.");
+					document.getElementById("result").className="title";
+					document.getElementById("result").style.float="right";
+					document.getElementById("result").style.width="3cm";
+					document.getElementById("result").innerHTML="You lose.";
 				}
 			}
 			</script>
