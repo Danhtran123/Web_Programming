@@ -33,25 +33,33 @@
 					<b>Current Card</b>
 				</div>
 				<div class="cards-container">
-					<img class="card" src="cardback.png" alt="cardback" style="margin-right:2.2cm">
+					<img class="card" src="cardback.png" alt="cardback" style="margin-right:2cm">
 					<img id="currentCard" class="card" src="ace_spades.png" alt="cardback">
 					<img id="newCard" class="card" src="cardback.png" alt="cardback" style="margin-left:1m">
 				</div>
+				<div class="moneyturn" style="font-size:16pt;font-style:bold">
+					Bet: $
+					<div id="bet" style="width:2cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">0</div>
+					<button type="button" onclick="decreaseBet()" style="width:0.8cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">-</button>
+					<button type="button" onclick="increaseBet()" style="width:0.8cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">+</button>
+				</div>
+				<div id="result" style="float:right;font-size:18pt"></div>
 				<div class="move-container" style="text-align:center;font-size:16pt">
 					<form name="myForm" onsubmit="return flipCard()">
-						<label for="bet">Bet: $</label>
-						<input type="number" id="bet" name="bet" style="width:2cm;height:0.7cm" required><br><br>
+						<!-- <label for="bet">Bet: $</label>
+						<input type="number" id="bet" name="bet" style="width:2cm;height:0.7cm" required>--><br><br>
 						<input type="radio" id="higher1" name="higherOrLower" value="1" required> 
 						<label for="higher1">Higher</label><br>
 						<input type="radio" id="lower1" name="higherOrLower" value="0" required>
 						<label for="lower1">Lower</label><br><br>
 						<input type="submit" value="Flip Card" style="font-size:16pt"><br>
-						<button type="button" style="font-size:16pt;margin-top:0.75cm;height:1cm" onclick="window.location.href='hol.html';">New Game</button>
+						<button id="newGame" type="button" style="font-size:16pt;margin-top:0.75cm;height:1cm" onclick="window.location.href='hol.html';">New Game</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	<script type="text/javascript">
+		var betAmount=0;
 		var suite1=Math.floor(Math.random()*4)+1;
 		var number1=Math.floor(Math.random()*13)+1;
 		var suite2=Math.floor(Math.random()*4)+1;
@@ -100,24 +108,55 @@
 			var hol=document.forms["myForm"]["higherOrLower"].value;
 			if(number1==number2)
 			{
-				alert("It's a tie.");
+				document.getElementById("result").className="title";
+				document.getElementById("result").style.float="right";
+				document.getElementById("result").style.width="3cm";
+				document.getElementById("result").style.height="1cm";
+				document.getElementById("result").style.marginRight="2cm";
+				document.getElementById("result").innerHTML="It's a tie.";
 				return false;
 			}
 			else if(hol==1&&number2>number1)
 			{
-				alert("You win!!");
+				document.getElementById("result").className="title";
+				document.getElementById("result").style.float="right";
+				document.getElementById("result").style.width="3cm";
+				document.getElementById("result").style.height="1cm";
+				document.getElementById("result").style.marginRight="2cm";
+				document.getElementById("result").innerHTML="You win!!";
 				return false;
 			}
 			else if(hol==0&&number2<number1)
 			{
-				alert("You win!!");
+				document.getElementById("result").className="title";
+				document.getElementById("result").style.float="right";
+				document.getElementById("result").style.width="3cm";
+				document.getElementById("result").style.height="1cm";
+				document.getElementById("result").style.marginRight="2cm";
+				document.getElementById("result").innerHTML="You win!!";
 				return false;
 			}
 			else
 			{
-				alert("You lose.");
+				document.getElementById("result").className="title";
+				document.getElementById("result").style.float="right";
+				document.getElementById("result").style.width="3cm";
+				document.getElementById("result").style.height="1cm";
+				document.getElementById("result").style.marginRight="2cm";
+				document.getElementById("result").innerHTML="You win!!";
 				return false;
 			}
+		}
+		function increaseBet() {
+			betAmount+=25;
+			document.getElementById("bet").innerHTML=betAmount;
+		}
+		function decreaseBet() {
+			if(betAmount>0)
+			{
+				betAmount-=25;
+			}
+			document.getElementById("bet").innerHTML=betAmount;
 		}
 	</script>
 	</body>
