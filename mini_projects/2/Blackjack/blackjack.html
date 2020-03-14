@@ -61,7 +61,7 @@
 			</div>
 		</div>
 	<script type="text/javascript">
-			var money=0;
+			var betAmount=0;
 			document.getElementById("bet").innerHTML=money;
 			var dealerScore=0;
 			var playerScore=0;
@@ -140,15 +140,15 @@
 				}
 			}
 			function increaseBet() {
-				money+=25;
-				document.getElementById("bet").innerHTML=money;
+				betAmount+=25;
+				document.getElementById("bet").innerHTML=betAmount;
 			}
 			function decreaseBet() {
-				if(money>0)
+				if(betAmount>0)
 				{
-					money-=25;
+					betAmount-=25;
 				}
-				document.getElementById("bet").innerHTML=money;
+				document.getElementById("bet").innerHTML=betAmount;
 			}
 			function hit() {
 				var number=Math.floor(Math.random()*13)+1;
