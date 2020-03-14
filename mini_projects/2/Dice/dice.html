@@ -32,17 +32,19 @@
 				<div class="cards-container" style="text-align:center">
 					<img id="die1" src="dice6.png" alt="first die" style="margin-right:2cm">
 					<img id="die2" src="dice6.png" alt="second die">
+				</div><br>
+				<div class="moneyturn" style="font-size:16pt;font-style:bold">
+					Bet: $
+					<div id="bet" style="width:2cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">0</div>
+					<button type="button" onclick="decreaseBet()" style="width:0.8cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">-</button>
+					<button type="button" onclick="increaseBet()" style="width:0.8cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">+</button><br><br>
+					<button type="button" onclick="rollTheDice()" style="font-size:16pt;font-weight:bold;height:0.8cm;background-color:white;color:black">Roll the Dice</button>
 				</div>
-				<div class="move-container">
-					<form style="font-size:18pt;text-align:center" onsubmit="return rollTheDice()">
-						<label for="bet">Bet: $</label>
-						<input type="number" id="bet" name="bet" style="width:2cm;height:0.75cm" required><br><br>
-						<input type="submit" style="font-size:18pt" value="Roll the Dice">
-					</form>
-				</div>
+				<div id="result" style="float:right;font-size:24pt;display:inline-block"></div>
 			</div>
 		</div>
 	<script type="text/javascript">
+		var betAmount=0;
 		function rollTheDice()
 		{
 			var firstRoll=Math.floor(Math.random()*6)+1;
@@ -56,14 +58,33 @@
 			var sum=firstRoll+secondRoll;
 			if(sum==7||sum==11)
 			{
-				alert("You win!!");
+				document.getElementById("result").className="title";
+				document.getElementById("result").style.float="right";
+				document.getElementById("result").style.width="5cm";
+				document.getElementById("result").style.marginRight="2cm";
+				document.getElementById("result").innerHTML="You win!!";
 				return false;
 			}
 			else
 			{
-				alert("You lose.");
+				document.getElementById("result").className="title";
+				document.getElementById("result").style.float="right";
+				document.getElementById("result").style.width="5cm";
+				document.getElementById("result").style.marginRight="2cm";
+				document.getElementById("result").innerHTML="You lose.";
 				return false;
 			}
+		}
+		function increaseBet() {
+			betAmount+=25;
+			document.getElementById("bet").innerHTML=betAmount;
+		}
+		function decreaseBet() {
+			if(betAmount>0)
+			{
+				betAmount-=25;
+			}
+			document.getElementById("bet").innerHTML=betAmount;
 		}
 	</script>
 	</body>
