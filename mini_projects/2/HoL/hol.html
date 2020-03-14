@@ -32,6 +32,7 @@
 				<div style="margin-top:1cm;text-align:center;font-size:18pt">
 					<b>Current Card</b>
 				</div>
+				<div id="result" style="float:right;font-size:18pt"></div>
 				<div class="cards-container">
 					<img class="card" src="cardback.png" alt="cardback" style="margin-right:2cm">
 					<img id="currentCard" class="card" src="ace_spades.png" alt="cardback">
@@ -40,22 +41,19 @@
 				<div class="moneyturn" style="font-size:16pt;font-style:bold">
 					Bet: $
 					<div id="bet" style="width:2cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">0</div>
-					<button type="button" onclick="decreaseBet()" style="width:0.8cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">-</button>
-					<button type="button" onclick="increaseBet()" style="width:0.8cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">+</button>
+					<button type="button" id="button1" onclick="decreaseBet()" style="width:0.8cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">-</button>
+					<button type="button" id="button2" onclick="increaseBet()" style="width:0.8cm;height:0.8cm;background-color:white;color:black;display:inline-block;margin-left:0.2cm">+</button>
 				</div>
-				<div id="result" style="float:right;font-size:18pt"></div>
 				<div class="move-container" style="text-align:center;font-size:16pt">
-					<form name="myForm" onsubmit="return flipCard()">
-						<!-- <label for="bet">Bet: $</label>
-						<input type="number" id="bet" name="bet" style="width:2cm;height:0.7cm" required>--><br><br>
+					<form name="myForm" id="button3" onsubmit="return flipCard()">
 						<input type="radio" id="higher1" name="higherOrLower" value="1" required> 
 						<label for="higher1">Higher</label><br>
 						<input type="radio" id="lower1" name="higherOrLower" value="0" required>
 						<label for="lower1">Lower</label><br><br>
-						<input type="submit" value="Flip Card" style="font-size:16pt"><br>
-						<button id="newGame" type="button" style="font-size:16pt;margin-top:0.75cm;height:1cm" onclick="window.location.href='hol.html';">New Game</button>
+						<input type="submit" value="Flip Card" class="move-action" style="font-size:16pt;width:3cm">
 					</form>
 				</div>
+				<div id="newGame" style="text-align:center;margin-bottom:2cm"></div>
 			</div>
 		</div>
 	<script type="text/javascript">
@@ -114,6 +112,7 @@
 				document.getElementById("result").style.height="1cm";
 				document.getElementById("result").style.marginRight="2cm";
 				document.getElementById("result").innerHTML="It's a tie.";
+				disableGame();
 				return false;
 			}
 			else if(hol==1&&number2>number1)
@@ -124,6 +123,7 @@
 				document.getElementById("result").style.height="1cm";
 				document.getElementById("result").style.marginRight="2cm";
 				document.getElementById("result").innerHTML="You win!!";
+				disableGame();
 				return false;
 			}
 			else if(hol==0&&number2<number1)
@@ -134,6 +134,7 @@
 				document.getElementById("result").style.height="1cm";
 				document.getElementById("result").style.marginRight="2cm";
 				document.getElementById("result").innerHTML="You win!!";
+				disableGame();
 				return false;
 			}
 			else
@@ -143,7 +144,8 @@
 				document.getElementById("result").style.width="3cm";
 				document.getElementById("result").style.height="1cm";
 				document.getElementById("result").style.marginRight="2cm";
-				document.getElementById("result").innerHTML="You win!!";
+				document.getElementById("result").innerHTML="You lose.";
+				disableGame();
 				return false;
 			}
 		}
@@ -157,6 +159,12 @@
 				betAmount-=25;
 			}
 			document.getElementById("bet").innerHTML=betAmount;
+		}
+		function disableGame() {
+			document.getElementById("button1").onclick="";
+			document.getElementById("button2").onclick="";
+			document.getElementById("button3").onsubmit="";
+			document.getElementById("newGame").innerHTML='<button type="button" class="move-action" style="width:4cm;font-size:16pt;margin-top:1cm"onclick="window.location.href=\'hol.html\';">New Game</button>'
 		}
 	</script>
 	</body>
