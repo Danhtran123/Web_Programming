@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	
 	if($_SESSION['username'] == ""){
 		header('location:../../login.php');
 	}
@@ -64,6 +63,9 @@
 						<div class="player">Dealer</div>
 						<img id="dcard1" class="card" alt="Dealer Card">
 						<img id="dcard2" class="card" src="cardback.png" alt="cardback">
+						<img id="dcard3">
+						<img id="dcard4">
+						<img id="dcard5">
 					</div>
 					<div class="cards-sub-container">
 						<div class="player">Player</div>
@@ -95,6 +97,7 @@
 			var dealerScore=0;
 			var playerScore=0;
 			var aceCounter=0;
+			var dealerAceCounter=0;
 
 			// First array is suite (clubs, diamonds, hearts, spades in order)
 			// Second array is number
@@ -105,6 +108,7 @@
 			[0,0,0,0,0,0,0,0,0,0,0,0,0,0]]; // Keeps track of already-dealt cards
 			var dealtCards=new Array(); // [0] & [1] Dealer's Cards, [2]+ Player's Cards
 			var newCardCounter=4;
+			var dealerCardCounter=4;
 			
 			var money = getCookie("money");
 			money = parseInt(money);
@@ -313,11 +317,99 @@
 				}
 				newCardCounter++;
 			}
+			function dealerHit() {
+				var number=Math.floor(Math.random()*13)+1;
+				var suite=Math.floor(Math.random()*4)+1;
+				while(deck[suite][number]!=0) // Making sure an unused card is picked
+				{
+					number=Math.floor(Math.random()*13)+1;
+					suite=Math.floor(Math.random()*4)+1;
+				}
+				deck[suite][number]=1;
+				var realsuite=""
+				switch(suite) {
+				case 1:
+				realsuite="C";
+				break;
+				case 2:
+				realsuite="D";
+				break;
+				case 3:
+				realsuite="H";
+				break;
+				case 4:
+				realsuite="S";
+				break;
+				}
+				var cardname=number+""+realsuite;
+				dealtCards[dealerCardCounter]=cardname;
+				var temp=cardname+".png";
+				var temp1=dealerCardCounter-1;
+				var temp2="dcard"+temp1;
+				document.getElementById(temp2).src=temp;
+				document.getElementById(temp2).style.height="200px";
+				document.getElementById(temp2).style.padding="50px 10px";
+				if(number==1)
+				{
+					dealerScore+=11;
+					dealerAceCounter++;
+					if(dealerScore>21)
+					{
+						dealerScore-=10;
+						dealerAceCounter--;
+					}
+				}
+				else if(number<10)
+				{
+					dealerScore+=number;
+					if(dealerScore>21)
+					{
+						if(dealerAceCounter>0)
+						{
+							dealerScore=-10;
+							dealerAceCounter--;
+						}
+						else
+						{
+							endGame();
+						}
+					}
+					else if(dealerCardCounter>5)
+					{
+						endGame();
+					}
+				}
+				else
+				{
+					dealerScore+=10;
+					if(dealerScore>21)
+					{
+						if(dealerAceCounter>0)
+						{
+							dealerScore=-10;
+							dealerAceCounter--;
+						}
+						else
+						{
+							endGame();
+						}
+					}
+					else if(dealerCardCounter>5)
+					{
+						endGame();
+					}
+				}
+				dealerCardCounter++;
+			}
+			
 			function endGame()
 			{
 				var temp=dealtCards[1];
 				var temp1=temp+".png";
 				document.getElementById("dcard2").src=temp1;
+				while(dealerScore<playerScore && dealerScore<21 && playerScore < 21){
+					dealerHit();
+				}
 				if(dealtCards[6]!=null&&playerScore<=21)
 				{
 					money+=betAmount*2
@@ -329,6 +421,14 @@
 				}
 				else if(playerScore<=21&&playerScore>dealerScore)
 				{
+					money+=betAmount*2
+					document.getElementById("money").innerHTML = "$" + money;
+					document.getElementById("result").className="title";
+					document.getElementById("result").style.width="5cm";
+					document.getElementById("result").innerHTML="You win!!";
+					disableGame();
+				}
+				else if(dealerScore >21){
 					money+=betAmount*2
 					document.getElementById("money").innerHTML = "$" + money;
 					document.getElementById("result").className="title";
