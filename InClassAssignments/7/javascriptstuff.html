@@ -1,0 +1,176 @@
+<!doctype HTML>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript">
+			function GenerateFib(step){
+				if(step <= 1){
+					return step;
+				}
+				return GenerateFib(step-1) + GenerateFib(step-2);
+			}
+			
+			function DrawStars(row){
+				for(i=1; i<=row; i++){
+					for(j=0; j<i; j++){
+						document.write("*");
+					}
+					document.write("<br/>");
+				}
+			}
+			
+			function SortArray(arr){
+				for(i=0; i<arr.length-1; i++){
+					min = i;
+					for(j=i+1; j<arr.length; j++){
+						if(arr[j] < arr[min]){
+							min = j;
+						}
+					}
+					temp = arr[min];
+					arr[min] = arr[i];
+					arr[i] = temp;
+					
+				}					
+				arr.forEach(printArray);
+			}
+			
+			function printArray(item){
+				document.writeln(item);
+			}
+			
+			function MostFrequentArrayItem(arr){
+				var count;
+				var biggest = 1;
+				for(i=0; i<arr.length; i++){
+					for(j=0; j<arr1.length; j++){
+						if(arr[i] == arr[j]){
+							count++;
+						}
+						if(biggest<count){
+							biggest = count;
+							name = arr[i];
+						}
+					}
+					count = 0;
+				}
+				document.writeln(name + " appears " + biggest + " times");
+			}
+			
+			function shuffleArray(arr){
+				var currentIndex = arr.length;
+				var temp;
+				var randomIndex;
+				
+				while(currentIndex != 0){
+					randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex -= 1;
+					
+					temp = arr[currentIndex];
+					arr[currentIndex] = arr[randomIndex];
+					arr[randomIndex] = temp;
+				}
+				return arr;
+			}
+			
+			function validateForms(){
+				var missing = new Array();
+				var ID = document.forms["identification"]["id"].value;
+				var fname = document.forms["identification"]["fname"].value;
+				var lname = document.forms["identification"]["lname"].value;
+				if(ID == "" || fname == "" || lname == ""){
+					if(ID == ""){
+						document.getElementById("id").innerHTML = "<span style='color:red; text-decoration: underline;'>Fill in the ID!</span>";
+						missing.push("ID");
+					}
+					else {
+						document.getElementById("id").innerHTML = "";
+					}
+					if(fname == ""){
+
+						document.getElementById("fname").innerHTML = "<span style='color: red; text-decoration: underline;'>Fill in the First Name!</span>";
+						missing.push("First Name");
+					}
+					else{
+						document.getElementById("fname").innerHTML = "";
+					}
+					if(lname == ""){
+						document.getElementById("lname").innerHTML = "<span style='color: red; text-decoration: underline;'>Fill in the Last Name!</span>";
+						missing.push("Last Name");
+					}
+					else{
+						document.getElementById("lname").innerHTML = "";
+					}
+					alert("Please fill in " + missing);
+					return false;
+				}
+				if(ID != "" && fname != "" && lname != ""){
+					document.getElementById("postID").innerHTML = "This is the USER ID: " + ID;
+					document.getElementById("postfname").innerHTML = "This is the First Name: " + fname;
+					document.getElementById("postlname").innerHTML = "This is the Last Name: " + lname;
+				}
+			}
+			
+			var arr = new Array(5,31,2,33,4,-2,3);
+			var arr1 = new Array(3,'a','a','a',2,3,'a',3,'a','a',2,4,9,3,3,3,3);
+			var arr2 = new Array(1,2,3,4,5,6,7,8,9,0);
+			
+			DrawStars(5);
+			document.writeln(GenerateFib(8));
+			document.write("<br><br>");
+			document.writeln("This is the original array: " + arr);
+			document.write("<br>");
+			document.write("This is the sorted array: ");
+			SortArray(arr);
+			document.write("<br><br>");
+			document.writeln("This is the array: " + arr1);
+			document.write("<br>");
+			MostFrequentArrayItem(arr1);	
+			document.write("<br>");
+			document.write("This is the original array: " + arr2);
+			document.write("<br>");
+			document.write("This is the shuffled array: " + shuffleArray(arr2));
+			
+		</script>
+	<title></title>
+	</head>
+	<body>
+		<br />
+		<form name="identification" action="javascriptstuff.html" onsubmit="return validateForms()" method="POST">
+			<table>
+				<tr>
+					<td><br></td>
+					<td><div id="id"></div></td>
+				</tr>
+				<tr>
+					<td><label for="id">ID:</label></td>
+					<td><input type="text" id="id" name="id"></td>
+				</tr>
+				<tr>
+					<td><br></td>
+					<td><div id="fname"></div></td>
+				</tr>
+				<tr>
+					<td><label for="fname">First Name:</label></td>
+					<td><input type="text" id="fname" name="fname"></td>
+				</tr>
+				<tr>
+					<td><br></td>
+					<td><div id="lname"></div></td>
+				</tr>
+				<tr>
+					<td><label for="lname">Last Name:</label></td>
+					<td><input type="text" id="lname" name="lname"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="submit" id="submit"></td>
+				</tr>
+			</table>
+		</form>
+		<div id="Information">
+			<div id="postID"></div>
+			<div id="postfname"></div>
+			<div id="postlname"></div>
+		</div>
+	</body>
+</html>
