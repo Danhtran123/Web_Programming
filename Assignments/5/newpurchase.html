@@ -1,0 +1,45 @@
+<!doctype HTML>
+	<head>
+	<link rel="stylesheet" type="text/css" href="index.css"></link>
+	<title>Purchase Form</title>
+	</head>
+	<body>
+		<div class="menu">
+			<a class="menu-item" href="index.html">Homepage</a>
+			<a class="menu-item" href="display.php">Show orders</a>
+			<a class="menu-item" href="newpurchase.html">Make an order</a>
+			<a class="menu-item" href="query.html">Find a supplier</a>
+		</div>
+		<br/><br/><br/>
+		<div class="formcontainer">
+			<form action="update.php" method="POST">
+				<table style="margin:auto">
+				<input type="number" name="pnum" placeholder="Purchase Number" disabled hidden>
+				<tr>
+				<td><label for="sid">Supplier ID: </label></td>
+				<td><input type="number" name="sid" placeholder="3 Digit Supplier ID" pattern="[0-9]{3}" maxlength="3" minlength="3" required></td>
+				</tr>
+				<tr>
+				<td><label for="pdate">Date: </label></td>
+				<td><input type="date" name="pdate" placeholder="Purchase Date" required></td>
+				</tr>
+				<tr>
+				<td><label for="quantity">Quantity: </label></td>
+				<td><input type="number" name="quantity" placeholder="Purchase Amount" required></td>
+				</tr>
+				<tr>
+				<td><label for="description">Description: </label></td>
+				<td><input type="text" name="description" placeholder="Item Name" required></td>
+				</tr>
+				<tr>
+				<td><label for="price">Price: </label></td>
+				<td><input type="number" name="price" placeholder="Item Price" required></td>
+				</tr>
+				<tr>
+				<td colspan="2"><input type="submit" value="Submit Order"></td>
+				</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>
