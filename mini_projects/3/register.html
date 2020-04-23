@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="./css/carry.css">
+	<link rel="stylesheet" type="text/css" href="./css/register.css">
+	<title>Registration</title>
+	</head>
+	<body>
+		<center>
+		<h2>Casino Registration</h2>
+		<br /><br />
+		<form action="register.php" method="POST">
+			<fieldset style="width:9cm">
+				<legend>User Info</legend>
+				<table>
+					<tr>
+						<td><label for="username">Username:</label></td>
+						<td><input type="text" name="username" pattern="[A-Za-z0-9]{3,20}" title="3 to 20 characters" required><br /></td>
+					</tr>
+					<tr>
+						<td><label for="password">Password:</label></td>
+						<td><input type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$" title="Must contain at least 6 characters, have an uppercase letter, have a lowercase letter, and have a number" required><br /></td>
+					</tr>
+					<tr>
+						<td><label for="confirm_password">Confirm Password:</label></td>
+						<td><input type="password" id="confirm_password" name="confirm_password" required><br /></td>
+					</tr>
+					<tr>
+						<td><label for="email">Email:</label></td>
+						<td><input type="email" id="email" name="email" required><br /></td>
+					</tr>
+					<tr>
+						<td><label for="confirm_email">Confirm Email:</label></td>
+						<td><input type="email" id="confirm_email" name="confirm_email" required><br /></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset style="width:9cm;text-align:right;margin-top:0.3cm">
+				<legend style="text-align:center">Personal Information</legend>
+					<label for="fname">First Name: </label>
+					<input type="text" name="fname" pattern="[a-zA-Z]*" style="margin-bottom:0.1cm;margin-right:0.35cm" required><br>
+					<label for="lname">Last Name: </label>
+					<input type="text" name="lname" pattern="[a-zA-Z]*" style="margin-bottom:0.1cm;margin-right:0.35cm" required><br>
+					<label for="dob">Date Of Birth: </label>
+						<select name="dob_day" id="dob_day"></select>
+						<select name="dob_month" id="dob_month"></select>
+						<select name="dob_year" id="dob_year" style="margin-right:0.35cm"></select><br>
+					<div>
+					<label>Sex: </label>
+					<label for="male">Male</label>
+					<input type="radio" id="male" name="sex" value="male">
+					<label for="female">Female</label>
+					<input type="radio" id="female" name="sex" value="female" style="margin-right:0.35cm"><br>
+					</div>
+					<label for="country">Country: </label>
+					<input type="text" name="country" style="margin-bottom:0.1cm;margin-right:0.35cm" required><br>
+					<label for="state">State: </label>
+					<input type="text" name="state" style="margin-bottom:0.1cm;margin-right:0.35cm" required><br>
+					<label for="city">City: </label>
+					<input type="text" name="city" style="margin-bottom:0.1cm;margin-right:0.35cm" required><br>
+					<label for="zipcode">Zip Code: </label>
+					<input type="text" name="zipcode" style="margin-bottom:0.1cm;margin-right:0.35cm" required><br>
+			</fieldset><br>
+			<label for="terms">Terms and Conditions</label>
+			<input type="checkbox" id="terms" name="terms" onclick="activateSubmit()"><br><br>
+			<button type="submit" id="submit" style="font-size:14pt" disabled>Confirm</button>
+		</form>
+		</center>
+		<script type="text/javascript" src="register.js"></script>
+	</body>
+</html>

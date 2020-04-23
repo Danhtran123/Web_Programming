@@ -1,0 +1,76 @@
+/*Action Buttons*/
+.move-container{
+	text-align: center;
+	margin-top: 2%;
+}
+
+.move-action{
+	min-width: 100px;
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+	border:1px solid white;
+	transition:0.5s ease-out;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+	.move-action:hover{
+		background-color:#465968;
+		transition:0.5s ease-out;
+	}
+/*End Action Buttons*/
+
+.game-container{
+	border: 2px solid black;
+}
+
+.cards-container{
+	text-align: center;
+}
+
+.card{
+	padding: 50px 10px;
+	height: 200px;
+	width: 128px;
+}
+
+.cards-sub-container{
+	display: flex;
+	justify-content: center;
+	width: 30%;
+	margin: 0 35%;
+}
+
+.player{
+	position: absolute;
+	height:10%;
+	font-size: 24px;
+}
+
+.deck{
+	position: absolute;
+	left: 30%;
+	top: 40%;
+	z-index: -1;
+}
+
+.title{
+	text-align:center;
+	font-size:18pt;
+	border:2px solid black;
+	background-color:#333;
+	display:block;
+	margin-top: 0.5cm;
+	max-width:10cm;
+	margin-left:auto;
+	margin-right:auto;
+}
+.bet{
+	width:2cm;
+	height:0.8cm;
+	background-color:white;
+	color:black;
+	display:inline-block;
+	margin-left:0.2cm;
+}
