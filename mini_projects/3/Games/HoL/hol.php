@@ -55,7 +55,7 @@ $userid = $_SESSION['userid'];
 					<?php if(!isset($_SESSION['username'])){ echo "<input type='submit' class='content' id='login' name='login' value='login'>"; }
 							else{ echo "<input type='submit' class='content' id='logout' name='logout' value='logout' >";}?>
 				</form>
-				<a href="settings.php" class="content">Settings</a>
+				<a href="../../settings.php" class="content">Settings</a>
 			</div>
 			<div class="game-container">
 				<div style="text-align:center">
