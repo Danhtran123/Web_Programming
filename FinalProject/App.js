@@ -4,7 +4,11 @@ import './App.css';
 function App() {
   return (
   <div>
-    <button className="newEventButton">Create a New Event</button>
+    <a href={process.env.PUBLIC_URL + "/eventForm.js"}>
+		<button className="newEventButton">
+			Create a New Event
+		</button>
+	</a>	
 	<div className="event" style={{left:"2%"}}>
 		EVENT 1
 		<div className="eventBodyText">
