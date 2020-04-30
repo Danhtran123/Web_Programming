@@ -1,0 +1,34 @@
+.newEventButton {
+	float:right;
+	margin-top:2cm;
+	margin-right:2cm;
+	height:2cm;
+	width:5cm;
+	border:2px solid white;
+	font-size:18pt;
+	background:#7f8782;
+}
+.event {
+	width:30%;
+	height:6cm;
+	background:white;
+	color:#4c4f4d;
+	position:absolute;
+	top:300px;
+	text-align:center;
+	font-style:bold;
+	font-size:24pt;
+	padding-top:10px;
+}
+.eventBodyText {
+	margin-top:1cm;
+	color:#4c4f4d;
+	font-size:16pt;
+}
+body {
+	background-color:#4c4f4d;
+}
+* {
+	color:white;
+	font-family:Helvetica;
+}
