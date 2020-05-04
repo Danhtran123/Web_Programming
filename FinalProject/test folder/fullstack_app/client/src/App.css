@@ -1,0 +1,48 @@
+.newEventButton {
+	height:2cm;
+	width:5cm;
+	border:2px solid white;
+	font-size:18pt;
+	background:#7f8782;
+	position:absolute;
+	top:1cm;
+}
+.event {
+	width:30%;
+	height:6cm;
+	background:white;
+	color:#4c4f4d;
+	text-align:center;
+	font-size:24pt;
+	margin: 10px;
+	display: inline-block;
+	padding-top: 10px;
+	vertical-align: bottom;
+}
+.eventBodyText {
+	margin-top:1cm;
+	color:#4c4f4d;
+	font-size:16pt;
+}
+.submitButton {
+	font-size:18pt;
+	color:#4c4f4d;
+}
+.inputBox {
+	color:#4c4f4d;
+	width:6cm;
+}
+.bodyContainer {
+	margin-top:4cm;
+}
+body {
+	background-color:#4c4f4d;
+	text-align:center;
+}
+* {
+	color:white;
+	font-family:Helvetica;
+}
+form {
+	font-size:18pt;
+}

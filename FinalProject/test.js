@@ -9,11 +9,13 @@ var writeStr = "";
 for(var i = 0; i < obj.length; i++)
 {
     var sheet = obj[i];
+	console.log("Sheet: " + i);
     //loop through all rows in the sheet
     for(var j = 0; j < sheet['data'].length; j++)
     {
             //add the row to the rows array
 			rows.push(sheet['data'][j]);
+			console.log(sheet['data'][j]);
     }
 }
 // here rows is an array that contains the parsed contents of the file as an array, so you can use it to access the 
