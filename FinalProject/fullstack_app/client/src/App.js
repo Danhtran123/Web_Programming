@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import {useForm} from "react-hook-form";
 import './App.css';
+var parseXls = require('./ParseXls.js');
 
 class App extends Component {
   // initialize our state
@@ -46,36 +47,12 @@ class App extends Component {
     }
   }
 
-  // just a note, here, in the front end, we use the id key of our data object
-  // in order to identify which we want to Update or delete.
-  // for our back end, we use the object id assigned by MongoDB to modify
-  // data base entries
-
   // our first get method that uses our backend api to
   // fetch data from our data base
   getDataFromDb = () => {
     fetch('http://localhost:3001/api/getData')
       .then((data) => data.json())
       .then((res) => this.setState({ data: res.data }));
-	  
-  };
-
-  // our delete method that uses our backend api
-  // to remove existing database information
-  deleteFromDB = (idTodelete) => {
-    parseInt(idTodelete);
-    let objIdToDelete = null;
-    this.state.data.forEach((dat) => {
-      if (dat.id == idTodelete) {
-        objIdToDelete = dat._id;
-      }
-    });
-
-    axios.delete('http://localhost:3001/api/deleteData', {
-      data: {
-        id: objIdToDelete,
-      },
-    });
   };
 
   // our update method that uses our backend api
@@ -94,21 +71,7 @@ class App extends Component {
       update: { message: updateToApply },
     });
   };
-  
-  setRedirect = () => {
-	  this.setState({
-		  redirect: true
-	  })
-  }
-  renderRedirect = () => {
-	  if (this.state.redirect){
-		  return <Redirect to='/eventpage' />
-	  }
-  }
 
-  // here is our UI
-  // it is easy to understand their functions when you
-  // see them render into our screen
   render(){
 	   const { data } = this.state;
         return (
@@ -130,85 +93,12 @@ class App extends Component {
                         <Route path="/newevent">
                             <EventForm />
                         </Route>
-						<Route path="/eventpage">
-							<div className="studentrow">
-							
-							</div>
-						</Route>
                     </Switch>
                 </div>
             </Router>
         );
     }
-  
-  
- /*
-  render() {
-    const { data } = this.state;
-    return (
-      <div>
-	  //database listing; if data.length is less than 0 no entries, else display data.message, dat.id/dat.messsage which are the databse names
-        <ul>
-          {data.length <= 0
-            ? 'NO DB ENTRIES YET'
-            : data.map((dat) => (
-                <li style={{ padding: '10px' }} key={data.message}>
-                  <span style={{ color: 'gray' }}> id: </span> {dat.id} <br />
-                  <span style={{ color: 'gray' }}> data: </span>
-                  {dat.message}
-                </li>
-              ))}
-        </ul>
-		//add
-        <div style={{ padding: '10px' }}>
-          <input
-            type="text"
-            onChange={(e) => this.setState({ message: e.target.value, name: 5 })}
-            placeholder="add something in the database"
-            style={{ width: '200px' }}
-          />
-          <button onClick={() => this.putDataToDB(this.state.message)}>
-            ADD
-          </button>
-        </div>
-		//delete
-        <div style={{ padding: '10px' }}>
-          <input
-            type="text"
-            style={{ width: '200px' }}
-            onChange={(e) => this.setState({ idToDelete: e.target.value })}
-            placeholder="put id of item to delete here"
-          />
-          <button onClick={() => this.deleteFromDB(this.state.idToDelete)}>
-            DELETE
-          </button>
-        </div>
-		//update
-        <div style={{ padding: '10px' }}>
-          <input
-            type="text"
-            style={{ width: '200px' }}
-            onChange={(e) => this.setState({ idToUpdate: e.target.value })}
-            placeholder="id of item to update here"
-          />
-          <input
-            type="text"
-            style={{ width: '200px' }}
-            onChange={(e) => this.setState({ updateToApply: e.target.value })}
-            placeholder="put new value of the item here"
-          />
-          <button
-            onClick={() =>
-              this.updateDB(this.state.idToUpdate, this.state.updateToApply)
-            }
-          >
-            UPDATE
-          </button>
-        </div>
-      </div>
-    );
-  }
- */
+
 }
 
 function EventForm() {
@@ -232,20 +122,55 @@ function EventForm() {
 				<p>End Date:</p>
 				<p><input ref={register} name="enddate" type="date" className="inputBox"/></p>
 			</label>
+			<label>
+				<input ref={register} type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file" />
+			</label>
 
 			<input type="submit" className="submitButton"/>
 		</form>
+		
 	);
 }
 
 //sends a post request to the database to insert event page information which is grabbed from the form.
 function putDataToDB (message) {
-
+	//var tempVar = new parseXls(message.file[0]);
+	//console.log(tempVar.getContents());
+	console.log(message.file[0]);
+	var student = [{"pantherid": "002142636",
+                    "firstname": "Harry",
+                    "lastname": "Potter",
+                    "department": "Computer Science",
+                    "level": "Graduate",
+					"campus": "Main Campus",
+					"degree": "Masters",
+					"email": "hpotter1@gsu.edu",
+					"college": "College of Arts and Sciences",
+					"year": "2020"}];
+	student[1] = {"pantherid": "002142876",
+                    "firstname": "Arya",
+                    "lastname": "Stark",
+                    "department": "Biology",
+                    "level": "Graduate",
+					"campus": "Main Campus",
+					"degree": "Doctorate",
+					"email": "astark1@gsu.edu",
+					"college": "School of Public Health",
+					"year": "2020"};
+	student[2] = {"type": "number",
+                    "pantherid": "filepantherid2",
+                    "description": "total number",
+                    "placeholder": "0",
+                    "className": "form-control",
+                    "name": "number - 1500374279764"};
+        console.log("test");
+		console.log(student);
     axios.post('http://localhost:3001/api/putEvent', {
 	  eventName: message.eventName,
 	  description: message.description,
 	  startdate: message.startdate,
 	  enddate: message.enddate,
+	  student: student,
 	  
     });
 	console.log("Placing in EventCollection...");
@@ -253,7 +178,6 @@ function putDataToDB (message) {
 	console.log(message.startdate);
 	console.log(message.description);
 	console.log(message);
-	{this.renderRedirect()}
 };
 //sends a post request to the database to insert the studentInformation which is grabbed from excel/csv files
 function putStudentInfoToDB (message) {
@@ -269,6 +193,7 @@ function putStudentInfoToDB (message) {
 		email: message.email,
 		college: message.college,
 		year: message.year,
+		checkin: false,
 	});
 	console.log("Placing in StudentCollection");
 	console.log(message.pantherid);

@@ -49,43 +49,9 @@ router.post('/updateData', (req, res) => {
   });
 });
 
-// this is our delete method
-// this method removes existing data in our database
-router.delete('/deleteData', (req, res) => {
-  const { id } = req.body;
-  Data.findByIdAndRemove(id, (err) => {
-    if (err) return res.send(err);
-    return res.json({ success: true });
-  });
-});
-
-/*
-// this is our create methid
-// this method adds new data in our database
-router.post('/putData', (req, res) => {
-  let data = new Data();
-
-  const { id, message, name } = req.body;
-
-  if ((!id && id !== 0) || !message) {
-    return res.json({
-      success: false,
-      error: 'INVALID INPUTS',
-    });
-  }
-  data.message = message;
-  data.id = id;
-  data.name = name;
-  data.save((err) => {
-    if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true });
-  });
-});
-*/
-
 router.post('/putEvent', (req, res) => {
   let data = new Data();
-  const { eventName, description, startdate, enddate } = req.body;
+  const { eventName, description, startdate, enddate, student } = req.body;
 
   if (!eventName) {
     return res.json({
@@ -97,6 +63,7 @@ router.post('/putEvent', (req, res) => {
   data.description = description;
   data.startdate = startdate;
   data.enddate = enddate;
+  data.student = student;
   data.save((err) => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });

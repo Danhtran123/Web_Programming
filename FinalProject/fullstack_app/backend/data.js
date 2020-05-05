@@ -8,8 +8,15 @@ const DataSchema = new Schema(
 	eventName: { type: String, required: true },
 	description: String,
 	startdate: Date,
-	enddate: Date
+	enddate: Date,
+	student: Array
   },
+  
+ 
+  
+  
+  
+  
   { timestamps: true }
 );
 
